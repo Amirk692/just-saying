@@ -2,48 +2,43 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Just Saying 🌸</title>
+<title>Just Saying… 🌸</title>
 
 <style>
 body{
     margin:0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg,#ffe6eb,#fff7f9);
+    background: radial-gradient(circle at top,#ffe6f0,#fff);
+    overflow:hidden;
     text-align:center;
-    overflow-x:hidden;
 }
 
-/* Floating hearts */
-.heart{
-    position:fixed;
-    bottom:-20px;
-    font-size:20px;
-    animation: floatUp 6s linear infinite;
-    opacity:0.7;
-}
-
-@keyframes floatUp{
-    from{ transform:translateY(0); opacity:0.8;}
-    to{ transform:translateY(-110vh); opacity:0;}
-}
-
+/* Fancy glowing card */
 .card{
     background:white;
-    padding:28px;
-    border-radius:22px;
     max-width:420px;
-    margin:80px auto;
-    box-shadow:0 10px 25px rgba(0,0,0,0.12);
-    transition:0.4s;
+    margin:90px auto;
+    padding:30px;
+    border-radius:24px;
+    box-shadow:0 15px 35px rgba(255,77,109,0.25);
+    animation:fadeIn 1s ease;
 }
 
-h1{ color:#ff4d6d; }
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+h1{
+    color:#ff4d6d;
+    margin-bottom:10px;
+}
 
 p{
     color:#444;
-    line-height:1.6;
+    line-height:1.7;
     opacity:0;
-    transform:translateY(10px);
+    transform:translateY(15px);
     transition:0.6s;
 }
 
@@ -53,19 +48,33 @@ p{
 }
 
 button{
-    background:#ff4d6d;
+    background:linear-gradient(45deg,#ff4d6d,#ff85a1);
     border:none;
     color:white;
-    padding:12px 18px;
-    border-radius:12px;
-    margin-top:12px;
+    padding:12px 20px;
+    border-radius:14px;
+    margin-top:15px;
     cursor:pointer;
     font-size:16px;
+    box-shadow:0 6px 15px rgba(255,77,109,0.3);
     transition:0.3s;
 }
 
 button:hover{
-    transform:scale(1.05);
+    transform:scale(1.07);
+}
+
+/* Floating sparkles */
+.sparkle{
+    position:fixed;
+    bottom:-20px;
+    animation:floatUp 7s linear infinite;
+    opacity:0.7;
+}
+
+@keyframes floatUp{
+    from{transform:translateY(0);}
+    to{transform:translateY(-110vh);}
 }
 </style>
 </head>
@@ -73,66 +82,62 @@ button:hover{
 <body>
 
 <div class="card">
-<h1>Hi You 😊</h1>
+<h1>Okay… real talk 😊</h1>
 
 <p class="show">
-So… I could’ve sent a normal message.  
-But I thought… why not make something a little different?
+You probably didn’t expect a second page…  
+but I wanted this one to feel a little calmer.
 </p>
 
-<button onclick="step1()">Tap if you're curious 👀</button>
+<button onclick="next1()">Continue 🌸</button>
 
-<p id="msg2">
-Okay fine… I just wanted to say you make conversations weirdly easy and fun 🌸
+<p id="t2">
+I don’t know where things go…  
+but I genuinely like the way we talk and laugh.
 </p>
 
-<button id="btn2" style="display:none;" onclick="step2()">One more tiny thing...</button>
+<button id="b2" style="display:none;" onclick="next2()">One honest confession 😄</button>
 
-<p id="msg3">
-This website took more effort than choosing what to reply to you 😄  
-So yeah… you might be kinda special.
+<p id="t3">
+I spent more time picking the colours of this page  
+than deciding what food to order today 😂
 </p>
 
-<button id="btn3" style="display:none;" onclick="step3()">Be honest… are you smiling? 🙂</button>
+<button id="b3" style="display:none;" onclick="next3()">Last thing… promise 💗</button>
 
-<p id="msg4">
-If yes — mission successful ✅  
-If no — refresh the page, maybe it works the second time 😂
+<p id="t4">
+No pressure, no drama —  
+just… just saying you’re kinda special.
 </p>
 
 </div>
 
 <script>
-function step1(){
-    let m2=document.getElementById("msg2");
-    let b2=document.getElementById("btn2");
-    m2.classList.add("show");
-    b2.style.display="inline-block";
+function next1(){
+    document.getElementById("t2").classList.add("show");
+    document.getElementById("b2").style.display="inline-block";
 }
 
-function step2(){
-    let m3=document.getElementById("msg3");
-    let b3=document.getElementById("btn3");
-    m3.classList.add("show");
-    b3.style.display="inline-block";
+function next2(){
+    document.getElementById("t3").classList.add("show");
+    document.getElementById("b3").style.display="inline-block";
 }
 
-function step3(){
-    let m4=document.getElementById("msg4");
-    m4.classList.add("show");
+function next3(){
+    document.getElementById("t4").classList.add("show");
 }
 
-/* Floating hearts generator */
+/* Sparkle animation */
 setInterval(()=>{
-    const heart=document.createElement("div");
-    heart.className="heart";
-    heart.innerHTML="💗";
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.fontSize=(15+Math.random()*20)+"px";
-    document.body.appendChild(heart);
+    const s=document.createElement("div");
+    s.className="sparkle";
+    s.innerHTML="✨";
+    s.style.left=Math.random()*100+"vw";
+    s.style.fontSize=(14+Math.random()*18)+"px";
+    document.body.appendChild(s);
 
-    setTimeout(()=>{heart.remove();},6000);
-},700);
+    setTimeout(()=>{s.remove();},7000);
+},800);
 </script>
 
 </body>
