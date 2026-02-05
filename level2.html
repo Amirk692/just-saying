@@ -2,163 +2,165 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Just Saying… 🌸</title>
+<title>Just Saying 🌙</title>
 
 <style>
 body{
     margin:0;
     font-family: Arial, sans-serif;
-    background:linear-gradient(135deg,#ffd6e6,#fff);
+    background: radial-gradient(circle at top,#0f0f14,#050507);
+    color:white;
     display:flex;
     justify-content:center;
     align-items:center;
     height:100vh;
     overflow:hidden;
-    transition:0.6s;
+    transition:1s ease;
 }
 
-/* Fancy glass UI card */
-.chatbox{
-    backdrop-filter: blur(12px);
-    background:rgba(255,255,255,0.7);
+/* ===== Premium Glass Card ===== */
+.card{
     width:90%;
-    max-width:420px;
-    height:540px;
-    border-radius:28px;
-    padding:20px;
-    box-shadow:0 20px 50px rgba(255,77,109,0.25);
-    display:flex;
-    flex-direction:column;
-    overflow-y:auto;
-    transition:0.6s;
-}
-
-/* message bubbles */
-.msg{
-    max-width:80%;
-    padding:12px 16px;
-    margin:8px 0;
-    border-radius:18px;
-    line-height:1.5;
-    font-size:15px;
-    display:none;
-    animation:pop 0.4s ease;
-}
-
-@keyframes pop{
-    from{transform:scale(0.9);opacity:0;}
-    to{transform:scale(1);opacity:1;}
-}
-
-.left{
-    background:#f1f1f1;
-    align-self:flex-start;
-}
-
-.right{
-    background:#ff4d6d;
-    color:white;
-    align-self:flex-end;
-}
-
-/* controls */
-.controls{
-    margin-top:auto;
+    max-width:520px;
+    padding:45px;
+    border-radius:30px;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter: blur(18px);
+    box-shadow:0 0 50px rgba(255,77,109,0.15);
+    border:1px solid rgba(255,255,255,0.08);
     text-align:center;
+    animation:fadeIn 1.2s ease;
+    transition:0.8s ease;
 }
 
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+h1{
+    color:#ff4d6d;
+    letter-spacing:1px;
+    margin-bottom:20px;
+}
+
+/* ===== Text Animation ===== */
+p{
+    color:#ddd;
+    line-height:1.7;
+    margin:22px 0;
+    opacity:0;
+    transform:translateY(12px);
+    transition:0.6s ease;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ===== Premium Button ===== */
 button{
     background:linear-gradient(45deg,#ff4d6d,#ff85a1);
     border:none;
     color:white;
-    padding:12px 18px;
-    border-radius:14px;
-    margin-top:10px;
+    padding:14px 24px;
+    border-radius:20px;
+    margin-top:20px;
     cursor:pointer;
     font-size:15px;
-    box-shadow:0 6px 15px rgba(255,77,109,0.3);
+    box-shadow:0 0 20px rgba(255,77,109,0.5);
     transition:0.3s;
 }
 
 button:hover{
-    transform:scale(1.05);
+    transform:scale(1.08);
+    box-shadow:0 0 40px rgba(255,77,109,0.8);
 }
 
-/* final surprise text */
-#final{
-    display:none;
-    text-align:center;
-    margin-top:10px;
-    color:#ff4d6d;
-    font-weight:bold;
-    animation:fadeIn 1s ease;
+/* ===== Premium Ending Glow ===== */
+.premium-end{
+    background: radial-gradient(circle,#1a0010,#000);
 }
 
-@keyframes fadeIn{
-    from{opacity:0;}
-    to{opacity:1;}
+.card-glow{
+    box-shadow:0 0 80px rgba(255,77,109,0.45);
 }
 
-/* floating hearts */
-.heart{
+/* ===== Floating Luxury Particles ===== */
+.particle{
     position:fixed;
     bottom:-20px;
-    animation:floatUp 7s linear infinite;
-    opacity:0.5;
+    animation:floatUp 9s linear infinite;
+    opacity:0.4;
 }
 
 @keyframes floatUp{
     from{transform:translateY(0);}
-    to{transform:translateY(-110vh);}
+    to{transform:translateY(-120vh);}
 }
 </style>
 </head>
 
 <body>
 
-<div class="chatbox" id="chatbox">
+<div class="card" id="card">
 
-<div id="m1" class="msg left">Hey 🙂</div>
-<div id="m2" class="msg left">You made it to the fancy page… impressive.</div>
-<div id="m3" class="msg right">I wanted this one to feel a little special 🌸</div>
-<div id="m4" class="msg left">Honestly… I just really enjoy talking to you.</div>
-<div id="m5" class="msg right">Also I definitely spent too much time designing this 😂</div>
-<div id="m6" class="msg left">No pressure, no expectations…</div>
-<div id="m7" class="msg right">Just saying — you make my days better 💗</div>
+<h1>Okay… small confession 😌</h1>
 
-<div id="final">✨ Okay… that’s the real message. Don’t tell anyone I made a whole website 😄 ✨</div>
+<p id="t1" class="show">
+You didn’t expect a dark secret page… right?
+</p>
 
-<div class="controls">
-<button onclick="nextMsg()">Tap to continue ✨</button>
-</div>
+<p id="t2">
+Relax — this isn’t a dramatic speech 😄  
+I just thought doing something different would be fun.
+</p>
+
+<p id="t3">
+Honestly… you have a really nice vibe.
+</p>
+
+<p id="t4">
+And yeah — I could’ve sent a normal message,  
+but where’s the personality in that?
+</p>
+
+<p id="t5">
+Anyway… just saying — talking to you feels easy ✨
+</p>
+
+<button onclick="next()">Okay… next 👀</button>
 
 </div>
 
 <script>
-let step=1;
+let step=2;
 
-function nextMsg(){
-    let current=document.getElementById("m"+step);
-    if(current){
-        current.style.display="block";
+function next(){
+    let el=document.getElementById("t"+step);
+
+    if(el){
+        el.classList.add("show");
         step++;
     }else{
-        document.getElementById("final").style.display="block";
-        document.body.style.background="linear-gradient(135deg,#ffc2d1,#fff)";
+        /* ===== PREMIUM ENDING EFFECT ===== */
+        document.body.classList.add("premium-end");
+        document.getElementById("card").classList.add("card-glow");
     }
 }
 
-/* floating hearts */
+/* ===== Floating Particles Animation ===== */
 setInterval(()=>{
-    const h=document.createElement("div");
-    h.className="heart";
-    h.innerHTML="💗";
-    h.style.left=Math.random()*100+"vw";
-    h.style.fontSize=(14+Math.random()*18)+"px";
-    document.body.appendChild(h);
+    const p=document.createElement("div");
+    p.className="particle";
+    p.innerHTML="✨";
+    p.style.left=Math.random()*100+"vw";
+    p.style.fontSize=(12+Math.random()*18)+"px";
+    document.body.appendChild(p);
 
-    setTimeout(()=>{h.remove();},7000);
-},900);
+    setTimeout(()=>{p.remove();},9000);
+},700);
 </script>
 
 </body>
