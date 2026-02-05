@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Something Small For You 💌</title>
+
+<style>
+body{
+    font-family: Arial;
+    background: linear-gradient(135deg,#ffe6eb,#fff7f9);
+    text-align:center;
+    padding:40px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    max-width:420px;
+    margin:auto;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+h1{ color:#ff4d6d; }
+
+button{
+    background:#ff4d6d;
+    border:none;
+    color:white;
+    padding:12px 18px;
+    border-radius:10px;
+    margin-top:10px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+#msg2,#msg3{
+    display:none;
+    margin-top:15px;
+    color:#444;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h1>Hi You 😊</h1>
+
+<p>
+I could have sent a normal text…  
+but where’s the fun in that?
+</p>
+
+<button onclick="showStep1()">Tap if you're curious 👀</button>
+
+<p id="msg2">
+Okay fine… I just wanted to say you make conversations way too easy and fun 🌸
+</p>
+
+<button id="btn2" style="display:none;" onclick="showStep2()">One more thing...</button>
+
+<p id="msg3">
+Also this website took more effort than choosing what to reply to you 😄  
+So yeah… you’re kinda special.
+</p>
+
+</div>
+
+<script>
+function showStep1(){
+    document.getElementById("msg2").style.display="block";
+    document.getElementById("btn2").style.display="inline-block";
+}
+
+function showStep2(){
+    document.getElementById("msg3").style.display="block";
+}
+</script>
+
+</body>
+</html>
