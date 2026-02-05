@@ -66,7 +66,7 @@ So yeah… you’re kinda special.
 </p>
 
 <br><br>
-<a href="level2.html" target="_blank">
+<a href="level2.html" target="_blank" id="level2link" style="display:none;">
     <button>Okay… open the real page 😄</button>
 </a>
 
@@ -80,9 +80,12 @@ function showStep1(){
 
 function showStep2(){
     document.getElementById("msg3").style.display="block";
+    document.getElementById("level2link").style.display="inline-block";
 }
+
 </script>
 
 </body>
 </html>
+
 
