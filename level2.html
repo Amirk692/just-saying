@@ -2,137 +2,163 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Just Saying 🌸</title>
+<title>Just Saying… 🌸</title>
 
 <style>
 body{
     margin:0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg,#ffe6eb,#fff7f9);
-    text-align:center;
-    overflow-x:hidden;
-}
-
-/* Floating hearts */
-.heart{
-    position:fixed;
-    bottom:-20px;
-    font-size:20px;
-    animation: floatUp 6s linear infinite;
-    opacity:0.7;
-}
-
-@keyframes floatUp{
-    from{ transform:translateY(0); opacity:0.8;}
-    to{ transform:translateY(-110vh); opacity:0;}
-}
-
-.card{
-    background:white;
-    padding:28px;
-    border-radius:22px;
-    max-width:420px;
-    margin:80px auto;
-    box-shadow:0 10px 25px rgba(0,0,0,0.12);
-    transition:0.4s;
-}
-
-h1{ color:#ff4d6d; }
-
-p{
-    color:#444;
-    line-height:1.6;
-    opacity:0;
-    transform:translateY(10px);
+    background:linear-gradient(135deg,#ffd6e6,#fff);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
     transition:0.6s;
 }
 
-.show{
-    opacity:1;
-    transform:translateY(0);
+/* Fancy glass UI card */
+.chatbox{
+    backdrop-filter: blur(12px);
+    background:rgba(255,255,255,0.7);
+    width:90%;
+    max-width:420px;
+    height:540px;
+    border-radius:28px;
+    padding:20px;
+    box-shadow:0 20px 50px rgba(255,77,109,0.25);
+    display:flex;
+    flex-direction:column;
+    overflow-y:auto;
+    transition:0.6s;
+}
+
+/* message bubbles */
+.msg{
+    max-width:80%;
+    padding:12px 16px;
+    margin:8px 0;
+    border-radius:18px;
+    line-height:1.5;
+    font-size:15px;
+    display:none;
+    animation:pop 0.4s ease;
+}
+
+@keyframes pop{
+    from{transform:scale(0.9);opacity:0;}
+    to{transform:scale(1);opacity:1;}
+}
+
+.left{
+    background:#f1f1f1;
+    align-self:flex-start;
+}
+
+.right{
+    background:#ff4d6d;
+    color:white;
+    align-self:flex-end;
+}
+
+/* controls */
+.controls{
+    margin-top:auto;
+    text-align:center;
 }
 
 button{
-    background:#ff4d6d;
+    background:linear-gradient(45deg,#ff4d6d,#ff85a1);
     border:none;
     color:white;
     padding:12px 18px;
-    border-radius:12px;
-    margin-top:12px;
+    border-radius:14px;
+    margin-top:10px;
     cursor:pointer;
-    font-size:16px;
+    font-size:15px;
+    box-shadow:0 6px 15px rgba(255,77,109,0.3);
     transition:0.3s;
 }
 
 button:hover{
     transform:scale(1.05);
 }
+
+/* final surprise text */
+#final{
+    display:none;
+    text-align:center;
+    margin-top:10px;
+    color:#ff4d6d;
+    font-weight:bold;
+    animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+/* floating hearts */
+.heart{
+    position:fixed;
+    bottom:-20px;
+    animation:floatUp 7s linear infinite;
+    opacity:0.5;
+}
+
+@keyframes floatUp{
+    from{transform:translateY(0);}
+    to{transform:translateY(-110vh);}
+}
 </style>
 </head>
 
 <body>
 
-<div class="card">
-<h1>Hi You 😊</h1>
+<div class="chatbox" id="chatbox">
 
-<p class="show">
-So… I could’ve sent a normal message.  
-But I thought… why not make something a little different?
-</p>
+<div id="m1" class="msg left">Hey 🙂</div>
+<div id="m2" class="msg left">You made it to the fancy page… impressive.</div>
+<div id="m3" class="msg right">I wanted this one to feel a little special 🌸</div>
+<div id="m4" class="msg left">Honestly… I just really enjoy talking to you.</div>
+<div id="m5" class="msg right">Also I definitely spent too much time designing this 😂</div>
+<div id="m6" class="msg left">No pressure, no expectations…</div>
+<div id="m7" class="msg right">Just saying — you make my days better 💗</div>
 
-<button onclick="step1()">Tap if you're curious 👀</button>
+<div id="final">✨ Okay… that’s the real message. Don’t tell anyone I made a whole website 😄 ✨</div>
 
-<p id="msg2">
-Okay fine… I just wanted to say you make conversations weirdly easy and fun 🌸
-</p>
-
-<button id="btn2" style="display:none;" onclick="step2()">One more tiny thing...</button>
-
-<p id="msg3">
-This website took more effort than choosing what to reply to you 😄  
-So yeah… you might be kinda special.
-</p>
-
-<button id="btn3" style="display:none;" onclick="step3()">Be honest… are you smiling? 🙂</button>
-
-<p id="msg4">
-If yes — mission successful ✅  
-If no — refresh the page, maybe it works the second time 😂
-</p>
+<div class="controls">
+<button onclick="nextMsg()">Tap to continue ✨</button>
+</div>
 
 </div>
 
 <script>
-function step1(){
-    let m2=document.getElementById("msg2");
-    let b2=document.getElementById("btn2");
-    m2.classList.add("show");
-    b2.style.display="inline-block";
+let step=1;
+
+function nextMsg(){
+    let current=document.getElementById("m"+step);
+    if(current){
+        current.style.display="block";
+        step++;
+    }else{
+        document.getElementById("final").style.display="block";
+        document.body.style.background="linear-gradient(135deg,#ffc2d1,#fff)";
+    }
 }
 
-function step2(){
-    let m3=document.getElementById("msg3");
-    let b3=document.getElementById("btn3");
-    m3.classList.add("show");
-    b3.style.display="inline-block";
-}
-
-function step3(){
-    let m4=document.getElementById("msg4");
-    m4.classList.add("show");
-}
-
-/* Floating hearts generator */
+/* floating hearts */
 setInterval(()=>{
-    const heart=document.createElement("div");
-    heart.className="heart";
-    heart.innerHTML="💗";
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.fontSize=(15+Math.random()*20)+"px";
-    document.body.appendChild(heart);
+    const h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="💗";
+    h.style.left=Math.random()*100+"vw";
+    h.style.fontSize=(14+Math.random()*18)+"px";
+    document.body.appendChild(h);
 
-    setTimeout(()=>{heart.remove();},6000);
-},700);
+    setTimeout(()=>{h.remove();},7000);
+},900);
 </script>
 
 </body>
